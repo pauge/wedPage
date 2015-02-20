@@ -11,6 +11,9 @@ wedApp.config(['$routeProvider',
 						controller: 'mainCtrl'
 					}).when('/info', {
 						templateUrl: 'partials/info.html',
-						controller: 'mainCtrl'})
-					}]);
+						controller: 'mainCtrl'
+					}).otherwise({
+						templateUrl: 'partials/main.html',
+						controller: 'mainCtrl'
+					})}]);
 
