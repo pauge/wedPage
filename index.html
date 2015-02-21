@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="style.css">
 	<script src="bower_components/angular/angular.js"></script>
 	<script src="bower_components/jquery/dist/jquery.js"></script>
-	<!--<script src="bower_components/bootstrap/js/bootstrap.js"></script>-->
+	<!--><script src="bower_components/bootstrap/dist/js/bootstrap.min.js">-->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="bower_components/angular-route/angular-route.js"></script>
 	<script src="scripts.js"></script>
@@ -23,13 +23,20 @@
 		 		</div>
 		 		<div>
 		 			<ul class="nav navbar-nav" >
-						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-			   			<li><a href="#"> Page 1-1</a></li>
-					</ul>
+						
 						</li>			   
-						<li ><a href="#info">Mitä</a></li>
-						<li ><a href="#juhlat">Missä ja milloin</a></li>
+						<li><a href="#info">Mitä</a></li>
+						<li><a href="#juhlat">Missä ja milloin</a></li>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Login<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+							<li>
+								<form ng-controller="LoginCtrl" >
+									<input class="form-control" placeholder="käyttäjä" ng-model="login.name">
+									<input class="form-control" type="password" placeholder="salasana" ng-model="login.pwd">
+									<button ng-click="alert(login)" class="btn btn-default">Kirjaudu</button>
+								</form>
+							</li>
+					</ul>
 					</ul> 
 				</div>
 			</nav>
