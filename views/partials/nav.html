@@ -1,0 +1,22 @@
+		<nav class="navbar navbar-default">	
+		 	<div class="navbar-header"> 
+		  		<a class="navbar-brand" ui-sref="main">S & A</a>
+		 	</div>
+		 	<div>
+		 		<ul class="nav navbar-nav" >   
+					<li><a ui-sref="info">Mitä</a></li>
+					<li><a ui-sref="juhlat">Missä ja milloin</a></li>
+					<li><a ui-sref="ilmo">Ilmoittautuminen</a></li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Login<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li>
+							<form ng-controller="LoginCtrl" >
+								<input class="form-control" placeholder="käyttäjä" ng-model="login.name">
+								<input class="form-control" type="password" placeholder="salasana" ng-model="login.pwd">
+								<button ng-click="notify(login)" class="btn btn-default">Kirjaudu</button>
+							</form>
+						</li>
+					</ul>
+				</ul> 
+			</div>
+		</nav>
