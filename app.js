@@ -27,6 +27,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.post('/', function(req,res) {
+		res.writeHead(200,{"content-type": "text/html;charset=UTF8;"});
+		res.end("POST");
+		console.log(req.body);
+});
+
 app.use('/', routes);
 app.use('/users', users);
 
@@ -68,6 +74,6 @@ app.get('/', function(req, res) {
 		res.send('views/index');
 });
 
-app.use('/node_modules', express.static(__dirname + '/node_modules'));
+
 
 app.listen(3000);

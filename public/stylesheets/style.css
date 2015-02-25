@@ -10,3 +10,17 @@ body {
 	height: 97vh;	
 	
 }
+
+.navbar-header {
+	width: 10%;
+}
+
+.nav {
+	width: 90%;
+}
+
+#loginmenu {
+	position: absolute;
+	left: 90%;
+	cursor: pointer;
+}
