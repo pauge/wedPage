@@ -9,10 +9,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var cors = require('cors');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
 var app = express();
 
 // view engine setup
@@ -26,12 +25,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.post('/', function(req,res) {
-		res.writeHead(200,{"content-type": "text/html;charset=UTF8;"});
-		res.end("POST");
-		console.log(req.body);
-});
 
 app.use('/', routes);
 app.use('/users', users);
@@ -70,10 +63,27 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-app.get('/', function(req, res) {
-		res.send('views/index');
+//my own stuff her
+//
+
+app.all('/*',function (req, res, next) {
+res.append('Access-Control-Allow-Origin', 'http://haat.kiviluoto.me');
+res.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+res.append('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+res.append('Access-Control-Allow-Credentials', true);
+next();
 });
 
+app.get('/',cors(), function(req, res) {
+	res.append('Access-Control-Allow-Origin', '*');
+	console.log('GET');
+	res.send("Hello world");
+});
 
+app.post('/', function(req,res) {
+	res.append('Access-Control-Allow-Origin', 'http://haat.kiviluoto.me');
+	//res.headers({'Access-Control-Allow-Origin': 'http:haat.kiviluoto.me'});
+	res.send('Hello world');
+});
 
 app.listen(3000);

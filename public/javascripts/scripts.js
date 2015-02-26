@@ -4,18 +4,20 @@ var App = angular.module('wedApp', ['ui.router']);
 
 
 App.controller('MainCtrl' ,function($scope) {
-		console.log('moi');
-	$scope.message = 'yet';
 });
 
 App.controller('LoginCtrl', function($scope, $window, $location, $http) {
 	$scope.notify = function(login) {
 			var name = login.name;
 			var pwd = login.pwd;
-			login.name = "";
-			login.pwd = "";
-			var url = $location.host();
-			$http.get(url+':3000').
+			var url = 'http://'+$location.host()+':3000';
+			$http.get(url).
+				success(function(data) {
+						console.log('success')
+				}).error(function(data) {
+						console.log('fail')
+				});
+			$http.post(url, {'name':login.name,'pwd':login.pwd}).
 				success(function(data) {
 						console.log('success')
 				}).error(function(data) {
